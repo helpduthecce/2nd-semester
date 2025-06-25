@@ -1,0 +1,57 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Dish {
+protected:
+	string name;
+	string cuisine;
+public:
+	int quantity;
+	int cost;
+
+	void setName(string sName) {
+		name = sName;
+	}
+	string getName() {
+		return name;
+	}
+	void setCuisine(string sCuisine) {
+		cuisine = sCuisine;}
+
+	string getCuisine() {
+		return cuisine;}
+
+    void operator++() { ++quantity; }
+	void operator--() { --quantity; }
+
+};
+
+class Appetiser : public Dish {
+public:
+	string main_incr;
+
+
+};
+class Main_Dish : public Dish {
+public:
+	string side_salad;
+
+
+
+};
+class Dessert : public Dish {
+public:
+	string main_incr;
+	bool diab;
+
+
+
+};
+void ShowMenu(Appetiser a1, Main_Dish m1, Dessert d1){
+	cout << "Appetiser : " << a1.getName() << " " << a1.getCuisine() << " " << a1.cost << endl;
+	cout << "Main Dish : " <<m1.getName() << m1.getCuisine() << " " << m1.cost << endl;
+	cout << "Main Dish : " << d1.getName() << " " << d1.getCuisine() <<  " " << d1.getCuisine() << endl;
+}
+
+
