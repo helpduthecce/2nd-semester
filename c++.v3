@@ -1,0 +1,94 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+ class Chef 
+ {private: string name;
+           int score;
+  public: Chef(string onoma, int x);
+          void setScore(int x);
+		  void setName(string onoma);
+		  int getScore();
+		  string getName();
+ };
+ void Chef::setScore(int x) 
+  { score=x; }
+  
+ void Chef::setName(string onoma)
+  { name = onoma;}
+  
+  int Chef::getScore()
+	{ return score; }
+  string Chef::getName()
+   { return name;}
+  		  
+ Chef::Chef(string onoma, int x) 
+ { cout << "Name: " << onoma << " Score: " << x << endl; }
+ 
+ class Team
+ { private: string team_name;
+            vector<string> chefs;
+            vector<int> chef_scores;
+   public: string leader;
+           Team(string tn,string tl);
+           void set_all_names(vector<string> onomata);
+           void set_all_scores(vector<int> scores);
+           vector<string> get_all_names();
+           vector<int> get_all_scores();
+           void add_new_chef(string chef);
+           void add_new_score(int score);
+           friend void members(Team& a,Chef b);
+};
+ void Team::set_all_names(vector<string> onomata)
+  { chefs=onomata;}
+ void Team::set_all_scores(vector<int> scores)
+  { chef_scores=scores;}
+ vector<string> Team::get_all_names() 
+  {return chefs;}
+  vector<int> Team::get_all_scores()
+   {return chef_scores;}
+   
+   Team::Team(string tn,string tl)
+    { team_name=tn; leader=tl; }
+  void Team::add_new_chef(string chef) 
+  {chefs.push_back(chef); }
+  
+  void Team::add_new_score(int score)
+   {chef_scores.push_back(score); }
+			
+ void members(Team& a,Chef b) {
+ 	int already = 3;
+   for(int i=0;i<a.chefs.size();i++) {
+   	if (a.chefs[i]==b.getName()) {
+   		cout << b.getName() << " Already a Member\n" ;
+   		already = 2;
+	   } 
+   }
+   if( already==3) {
+   	a.add_new_chef(b.getName());
+   	a.add_new_score(b.getScore());
+   	cout << b.getName() << " added as a member to Team " << a.team_name <<endl;
+   }
+}
+   void Team_Score(Team a, Team b)
+    { 
+	  int sum_a=0;
+      int sum_b=0;
+      for(int i=0;i<a.get_all_scores().size();i++) {
+      	sum_a=sum_a+a.get_all_scores()[i];
+      }      
+      for(int i=0;i<b.get_all_scores().size();i++) {
+      	sum_b=sum_b+b.get_all_scores()[i];
+      }
+      if(sum_a>sum_b)
+      { cout << " First Team will Win,Total Score: " << sum_a+sum_b <<endl; }
+	  else if (sum_a<sum_b)
+	  { cout << "Second Team will Win,Total Score: " << sum_a+sum_b <<endl; }
+	  else { cout << "Equal Teams,Total Score " << sum_a+sum_b << endl;	  
+	  }
+ }
+  
+ 
+ 
+ 
