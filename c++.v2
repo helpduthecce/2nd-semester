@@ -1,0 +1,44 @@
+# include <iostream> 
+# include <cstring>
+using namespace std ;
+
+ class Chef {
+ 	public:  string name;
+ 	         int win;
+ 	         void disc();
+ 	         Chef ();
+ 	         getScore();
+ 	         getSpec_cuisine();
+ 	         string setSpec_cuisine();
+ 	         setScore(double a);
+ 	         ~Chef ();
+ 	private: string spec_cuisine;
+	         double score;        
+ };
+  Chef :: Chef()
+   { cout << "A new chef is ready to cook\n";
+     cout << "Last year's winner was HarrysThoidis with 92 wins and 579 points.HarrysThoidis favorite cuisine is Italian\n";
+  }
+    void Chef :: disc()
+    { cout << "Name of the chef:\n" << Chef::name;
+      cout << "Score of the chef:\n" << Chef::getScore;
+      cout << "Wins of the chef:\n" << Chef::win;
+      cout << "Cuisine of the chef:\n " << Chef::setSpec_cuisine();
+	}
+  Chef ::~Chef() 
+    { cout << "Chef left the competition\n"; }
+  void compare_Chefs(Chef c1,Chef c2)
+   {  if( c1.getScore() > c2.getScore() ) {cout << "First chef has higher score\n"; }
+      else if ( c1.getScore() < c2.getScore() ) { cout << "Second chef has higher score\n"; }
+      else cout << "Same score\n";
+	 }  
+   void duel(Chef c1,Chef c2,bool x)
+     { if (x==1 ) {  c1.setScore(c1.getScore()+c2.getScore()); }
+       else c2.setScore(c2.getScore()+c1.getScore());
+	 }
+	Chef ::getScore()
+	  {return score ; }
+	Chef ::setScore(double a) 
+	{ score= a; } 
+	
+	
