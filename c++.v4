@@ -1,0 +1,113 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Dish{
+    protected:
+        string name;
+        string cuisine;
+    public:
+        int quantity;
+        int cost;
+        Dish();
+        Dish(int);
+        Dish(string aName, string aCuisine, int aQuantity, int aCost);
+        void operator--(){ --quantity; }
+        void operator++(){ ++quantity; }
+        void Display(){
+            cout << "Quantity = " << quantity << endl;
+        }
+        void setName(string sName){
+            name = sName;
+        }
+
+        string getName(){
+            return name;
+        }
+
+         void setCuisine(string sCuisine){
+            cuisine = sCuisine;
+        }
+
+        string getCuisine(){
+            return cuisine;
+        }
+};
+
+Dish::Dish(){
+    name = "No Dish";
+    cuisine = '-';
+    quantity = 0;
+    cost = 0;
+}
+Dish::Dish(int a){
+    quantity = a;
+}
+
+Dish::Dish(string aName, string aCuisine, int aQuantity, int aCost){
+    name = aName;
+    cuisine = aCuisine;
+    quantity = aQuantity;
+    cost = aCost;
+}
+
+class Appetiser : public Dish{
+    public:
+        string main_incr;
+        Appetiser(string aMain_incr){
+           main_incr = aMain_incr;}
+
+        Appetiser(){}
+
+};
+
+class Main_Dish : public Dish{
+    public:
+        string side_salad;
+        Main_Dish(string aSide_salad){
+            side_salad = aSide_salad;
+        }
+        Main_Dish(){}
+};
+
+class Dessert : public Dish{
+    public:
+        string main_incr;
+        bool diab;
+        Dessert(string aMain_incr, bool aDiab){
+            main_incr = aMain_incr;
+            diab = aDiab;
+        }
+        Dessert(){}
+};
+
+void ShowMenu(Appetiser appV, Main_Dish mdV, Dessert dessV){
+
+
+
+    cout << "Appetiser : " << endl;
+    cout << "--------------------" << endl;
+    cout << "Name : " << appV.getName() << endl;
+    cout << "Cuisine : " << appV.getCuisine() << endl;
+    cout << "Cost : " << appV.cost << " $ " << endl;
+    cout << "  " << endl;
+
+    cout << "Main Dish : " << endl;
+    cout << "--------------------" << endl;
+    cout << "Name : " << mdV.getName() << endl;
+    cout << "Cuisine : " << mdV.getCuisine() << endl;
+    cout << "Cost : " << mdV.cost << " $ " << endl;
+    cout << "  " << endl;
+
+    cout << "Main Dish : " << endl;
+    cout << "--------------------" << endl;
+    cout << "Name : " << dessV.getName() << endl;
+    cout << "Cuisine : " << dessV.getCuisine() << endl;
+    cout << "Cost : " << dessV.cost << " $ " <<endl;
+    cout << "  " << endl;
+
+}
+
+
+
+
